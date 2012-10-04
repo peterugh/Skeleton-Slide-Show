@@ -34,6 +34,7 @@ pre .comment{
 	padding:0;
 	border:0;
 	background:#272922;
+	border-collapse:collapse;
 }
 .code_block{
 	border-radius: 8px;
@@ -46,10 +47,11 @@ td{
 	
 }
 td.numbering{
-	 background: #cccccc;
-	 padding:0 12px 0 4px;
-	 width:10px;
-	 vertical-align:top;
+	background: #cccccc;
+	padding:0 12px 0 4px;
+	width:10px;
+	vertical-align:top;
+	margin:0;
 }
 td.numbering{
 	border-radius: 7px 0 0 7px;
