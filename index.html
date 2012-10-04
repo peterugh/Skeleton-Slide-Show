@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery.1.8.2.min.js"></script>
+<script type="text/javascript" src="js/skeletonSlideShow.1.0.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link rel="stylesheet" href="css/code.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.css" type="text/css"/>
+<title>Skeleton Slider</title>
+</head>
+<body>
+<div id="wrapper">
+    <h1>
+        Skeleton Slide Show
+        <span>A Bare Bones Slider</span>
+    </h1>
+    <ul id="slider">
+        <li style="background:url(images/slide-1.jpg);">
+            <h1 id="jupiter_title">Jupiter</h1>
+            <p id="jupiter_text">Jupiter is the fifth planet from the Sun and the largest planet within the Solar System. It is a gas giant with mass one-thousandth that of the Sun but is two and a half times the mass of all the other planets in our Solar System combined. Jupiter is classified as a gas giant along with Saturn, Uranus and Neptune. Together, these four planets are sometimes referred to as the Jovian or outer planets.
+            </p>
+        </li>
+        <li style="background:url(images/slide-2.jpg);">
+            <h1 id="raygun_title">
+                Ray Gun
+            </h1>
+            <p id="raygun_text">
+                Rayguns are a type of fictional directed-energy weapon. They are a well-known feature of science fiction; for such stories they typically have the general function of guns. According to the stories, when activated, a raygun emits a ray, typically visible, usually lethal if it hits a human target, often destructive if it hits mechanical objects, with properties and other effects unspecified or varying.
+            </p>
+        </li>
+        <li style="background:url(images/slide-3.jpg);">
+            <h1 id="darts_title">
+                Darts
+            </h1>
+            <p id="darts_text">
+                Darts is a form of throwing game in which darts are thrown at a circular target (dartboard) fixed to a wall.[2] Though various boards and rules have been used in the past, the term "darts" usually now refers to a standardised game involving a specific board design and set of rules. As well as being a professional competitive sport, darts is a traditional pub game, commonly played in the United Kingdom, across the Commonwealth, the Netherlands, Belgium, Republic of Ireland, the Scandinavian countries, the United States, Canada, and elsewhere.
+            </p>
+        </li>
+    </ul>
+    <p id="sliderNavigation">
+    </p>
+    <div id="sliderPagination">
+    </div>
+    
+    <h2>Introduction</h2>
+    <p>
+    	I created this plugin as a coding exercise and the desire for a blank slider plugin. Like my other plugins, the shell is totally empty. There are no themes or CSS files to include. It simply takes a series of elements within a container and makes them into a slide show.	
+    </p>
+    
+    <h2>The Code</h2>
+    <p>
+    	There are no necessary plugin options. The slideshow by default will be the size of your container. The size definition takes place first in the plugin, so take into consideration the size of your inner elements.
+    </p>
+    <h2>Simplest Usage</h2>
+    <table cellspacing="0" class="code_block">
+        <tr>
+            <td class="numbering">
+<pre class="numbering">
+1
+2
+3
+</pre>
+            </td>
+            <td>
+<pre>
+<b>$</b>(<i>document</i>).ready(<i>function</i>(){
+    <b>$</b>(<em>"#slideShow"</em>).skeletonSlideShow();
+});
+</pre>
+            </td>
+        </tr>
+    </table>
+    <h2>
+    	Advanced Usage
+    </h2>
+    <p>
+    	The plugin provides several options that allow you to gain more control. There are also events available to you so you can pile on effects. Below is the plugin with all the non-required options. This is also the code that is running the sliding doors example at the top of the page.<br/><br/>
+    </p>
+    <table cellspacing="0" class="code_block">
+        <tr>
+            <td class="numbering">
+<pre class="numbering">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre>
+            </td>
+            <td>
+<pre>
+<b>$</b>(<i>document</i>).ready(<i>function</i>(){
+    <b>$</b>(<em>"#slideShow"</em>).skeletonSlideShow({
+        advanceEnd:  <i>function</i>(thisSlide) {
+            <span class="comment">//Just finished and animation a transision</span>
+            <i>console</i>.log(<em>'The current slide was just updated to: '</em> + thisSlide);
+        },
+        advanceStart:  <i>function</i>(thisSlide) {
+            <span class="comment">//Animation is beginning a transision</span>
+            <i>console</i>.log(<em>'The slide that is now animating away is: '</em> + thisSlide);
+        },
+        animation: <em>'slide'</em>,
+        easingMethod: <em>'linear'</em>,
+        height: <strong>300</strong>,
+        markupNavigation: <span>true</span>,
+        navigationContainer: <em>'#slideShowArrows'</em>,
+        paginationContainer: <em>'#slideShowPager'</em>,
+        pluginLoaded: <i>function</i>() {
+            <span class="comment">//Manipulate DOM of plugin now</span>
+        },
+        transitionSpeed: <strong>500</strong>,
+        visibleFor: <strong>3000</strong>,
+        width: <strong>900</strong>
+    });
+});
+</pre>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>Default Options</h2>
+    <ul id="default">
+        <li>
+            <ul>
+                <li class="round_top_left"><strong>Option Name</strong></li>
+                <li><strong>Default Value</strong></li>
+                <li><strong>Data Type</strong></li>
+                <li class="round_top_right"><strong>Possible Values/Further Explanation</strong></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>advanceEnd</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>Fires when a transition finishes. Returns the current slide.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>advanceStart</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>Fires when a transition starts. Returns the current slide (slide that is exiting).</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>animation</li>
+                <li>'slide'</li>
+                <li>Type: String</li>
+                <li>Currently the only value is slide. Future will have fade/slide/slideRight</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>easingMethod</li>
+                <li>'swing'</li>
+                <li>Type: String</li>
+                <li>Any easing method. Including custom easing plugins.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>height</li>
+                <li>Container Height</li>
+                <li>Type: Int</li>
+                <li>Any unsigned integer.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>markupNavigation</li>
+                <li>false</li>
+                <li>Type: Boolean</li>
+                <li>Whether or not to add classes to individual pagination items</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>navigationContainer</li>
+                <li>false</li>
+                <li>Type: String</li>
+                <li>Any container element. Prev/Next controls replace element contents.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>paginationContainer</li>
+                <li>false</li>
+                <li>Type: String</li>
+                <li>Any container element. Pagination is appended to element's current contents.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>pluginLoaded</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>Fires when the plugin has loaded the elements completely.</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>transitionSpeed</li>
+                <li>500</li>
+                <li>Type: Int</li>
+                <li>Any unsigned integer</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>visibleFor</li>
+                <li>5000</li>
+                <li>Type: Int</li>
+                <li>Any unsigned integer</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li class="round_bottom_left">width</li>
+                <li>Container Width</li>
+                <li>Type: Int</li>
+                <li class="round_bottom_right">Any unsigned integer</li>
+            </ul>
+        </li>
+    </ul>
+    <span class="clear_both"></span>
+    
+    <h2>CSS Reference</h2>
+    <p>
+    	The plugin writes CSS classes to the slideshow as well as adding a container element. Below is the explanation of these classes and how they can be manipulated.
+    </p>
+    <h3>
+    	Generated container 
+    </h3>
+    <p>
+    	If the slides that are passed in are list items, the container is an unordered list.
+    </p>
+        <pre class="sample_markup">
+<span class="comment">&lt;!-- Sample Markup --&gt;</span>
+
+<b>&lt;ul</b> <span>id</span>=<em>"slideShow"&gt;</em>
+    <b>&lt;li&gt;</b>First Slide<b>&lt;/li&gt;</b>
+    <b>&lt;li&gt;</b>Second Slide<b>&lt;/li&gt;</b>
+    <b>&lt;li&gt;</b>Third Slide<b>&lt;/li&gt;</b>
+<b>&lt;/ul&gt;</b></pre>
+
+        <pre class="sample_markup">
+<span class="comment">&lt;!-- Plugin Generated Markup --&gt;</span>
+
+<b>&lt;ul</b> <span>id</span>=<em>"slideShow"</em><b>&gt;</b>
+    <b>&lt;li</b> <span>class</span>=<em>"skeleton_wrapper"</em><b>&gt;</b>
+        <b>&lt;ul&gt;</b>
+            <b>&lt;li&gt;</b>First Slide<b>&lt;/li&gt;</b>
+            <b>&lt;li&gt;</b>Second Slide<b>&lt;/li&gt;</b>
+            <b>&lt;li&gt;</b>Third Slide<b>&lt;/li&gt;</b>
+        <b>&lt;/ul&gt;</b>
+    <b>&lt;/li&gt;</b>
+<b>&lt;/ul&gt;</b></pre>
+    <br class="clear_both"/>
+    
+    <p>
+    	If the slides that are passed in are not list items, the container is a div.
+    </p>
+    <pre class="sample_markup">
+<span class="comment">&lt;!-- Sample Markup --&gt;</span>
+
+<b>&lt;div</b> <span>id</span>=<em>"slideShow"</em><b>&gt;</b>
+    <b>&lt;div&gt;</b>First Slide<b>&lt;/div&gt;</b>
+    <b>&lt;div&gt;</b>Second Slide<b>&lt;/div&gt;</b>
+    <b>&lt;div&gt;</b>Third Slide<b>&lt;/div&gt;</b>
+<b>&lt;/div&gt;</b></pre>
+
+        <pre class="sample_markup">
+<span class="comment">&lt;!-- Plugin Generated Markup --&gt;</span>
+
+<b>&lt;div</b> <span>id</span>=<em>"slideShow"</em><b>&gt;</b>
+    <b>&lt;div</b> <span>class</span>=<em>"skeleton_wrapper"</em><b>&gt;</b>
+        <b>&lt;div&gt;</b>First Slide<b>&lt;/div&gt;</b>
+        <b>&lt;div&gt;</b>Second Slide<b>&lt;/div&gt;</b>
+        <b>&lt;div&gt;</b>Third Slide<b>&lt;/div&gt;</b>
+    <b>&lt;/div&gt;</b>
+<b>&lt;/div&gt;</b></pre>
+    <br class="clear_both"/>
+    
+    
+    
+    <h3>
+    	Pagination 
+    </h3>
+    <p>
+    	If a pagination container is passed as a plugin option, then the following markup will be written in that container.
+    </p>
+    <pre class="sample_markup wide_markup">
+<span class="comment">&lt;!-- Markup with plugin option 'markupNavigation' set to 'false'  --&gt;</span>
+
+<b>&lt;ul&gt;</b>
+    <b>&lt;li&gt;</b><b>&lt;a</b> <span>href</span>=<em>"#pagination"</em> <span>class</span>=<em>"nav_current_slide"</em><b>></b>1<b>&lt;/a&gt;</b><b>&lt;/li&gt;</b>
+    <b>&lt;li&gt;</b><b>&lt;a</b> <span>href</span>=<em>"#pagination"</em><b>></b>2<b>&lt;/a&gt;</b><b>&lt;/li&gt;</b>
+    <b>&lt;li&gt;</b><b>&lt;a</b> <span>href</span>=<em>"#pagination"</em><b>></b>3<b>&lt;/a&gt;</b><b>&lt;/li&gt;</b>
+<b>&lt;/ul&gt;</b>
+
+<span class="comment">&lt;!-- Markup with plugin option 'markupNavigation' set to 'true'  --&gt;</span>
+
+<b>&lt;ul&gt;</b>
+    <b>&lt;li&gt;</b><b>&lt;a</b> <span>href</span>=<em>"#pagination"</em> <span>class</span>=<em>"goto_slide_1 nav_current_slide"</em><b>></b>1<b>&lt;/a&gt;</b><b>&lt;/li&gt;</b>
+    <b>&lt;li&gt;</b><b>&lt;a</b> <span>href</span>=<em>"#pagination"</em> <span>class</span>=<em>"goto_slide_2"</em><b>></b>2<b>&lt;/a&gt;</b><b>&lt;/li&gt;</b>
+    <b>&lt;li&gt;</b><b>&lt;a</b> <span>href</span>=<em>"#pagination"</em> <span>class</span>=<em>"goto_slide_3"</em><b>></b>3<b>&lt;/a&gt;</b><b>&lt;/li&gt;</b>
+<b>&lt;/ul&gt;</b>
+</pre>    
+    <br class="clear_both"/>
+    
+    <h3>
+    	Previous/Next Navigation
+    </h3>
+    <p>
+    	If a navigation container is passed as a plugin option, then the following markup will be written in that container.
+    </p>
+    <pre class="sample_markup markup_auto">
+<b>&lt;a</b> <span>href</span>=<em>"#"</em> <span>class</span>=<em>"previous_page"</em><b>></b>Previous<b>&lt;/a&gt;</b>
+<b>&lt;a</b> <span>href</span>=<em>"#"</em> <span>class</span>=<em>"next_page"</em><b>></b>Next<b>&lt;/a&gt;</b>
+</pre>    
+    <br class="clear_both"/>
+</div>
+
+
+<script type="text/javascript">
+
+$("#slider").skeletonSlideShow({
+	navigationContainer: '#sliderNavigation',
+	paginationContainer: '#sliderPagination',
+	markupNavigation: false,
+	height: 300,
+	width: 900,
+	visibleFor: 5000,
+	pluginLoaded: function(){
+		$('#sliderNavigation .previous_page').html('<i class="icon-chevron-left"></i>');
+		$('#sliderNavigation .next_page').html('<i class="icon-chevron-right"></i>');
+	}
+});
+</script>
+</body>
+</html>
