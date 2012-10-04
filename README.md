@@ -76,4 +76,4 @@ If a pagination container is passed as a plugin option, then the following marku
 
 If a navigation container is passed as a plugin option, then the following markup will be written in that container.
 
-###For default values and options see the [index.html](https://github.com/peterugh/Sliding-Doors/blob/master/index.html) file included in this repository
+###For default values and options see the [index.html](https://github.com/peterugh/Skeleton-Slide-Show/blob/master/index.html) file included in this repository
