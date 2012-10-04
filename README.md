@@ -58,22 +58,73 @@ The plugin writes CSS classes to the slideshow as well as adding a container ele
 
 If the slides that are passed in are list items, the container is an unordered list.
 
-Sample Markup:
-
 ``` html
+<!-- Sample Markup -->
 <ul id="slideShow">
     <li>First Slide</li>
     <li>Second Slide</li>
     <li>Third Slide</li>
 </ul>
+
+<!-- Plugin Generated Markup -->
+<ul id="slideShow">
+    <li class="skeleton_wrapper">
+        <ul>
+            <li>First Slide</li>
+            <li>Second Slide</li>
+            <li>Third Slide</li>
+        </ul>
+    </li>
+</ul>
+```
+
+If the slides that are passed in are not list items, the container is a div.
+
+``` html
+<!-- Sample Markup -->
+<div id="slideShow">
+    <div>First Slide</div>
+    <div>Second Slide</div>
+    <div>Third Slide</div>
+</div>
+
+<!-- Plugin Generated Markup -->
+<div id="slideShow">
+    <div class="skeleton_wrapper">
+        <div>First Slide</div>
+        <div>Second Slide</div>
+        <div>Third Slide</div>
+    </div>
+</div>
 ```
 
 ###Pagination
 
 If a pagination container is passed as a plugin option, then the following markup will be written in that container.
 
+``` html
+<!-- Markup with plugin option 'markupNavigation' set to 'false'  -->
+<ul>
+    <li><a href="#pagination" class="nav_current_slide">1</a></li>
+    <li><a href="#pagination">2</a></li>
+    <li><a href="#pagination">3</a></li>
+</ul>
+
+<!-- Markup with plugin option 'markupNavigation' set to 'true'  -->
+<ul>
+    <li><a href="#pagination" class="goto_slide_1 nav_current_slide">1</a></li>
+    <li><a href="#pagination" class="goto_slide_2">2</a></li>
+    <li><a href="#pagination" class="goto_slide_3">3</a></li>
+</ul>
+```
+
 ###Previous/Next Navigation
 
 If a navigation container is passed as a plugin option, then the following markup will be written in that container.
 
-###For default values and options see the [index.html](https://github.com/peterugh/Sliding-Doors/blob/master/index.html) file included in this repository
+``` html
+<a href="#" class="previous_page">Previous</a>
+<a href="#" class="next_page">Next</a>
+```
+
+###For default values and options see the [index.html](https://github.com/peterugh/Skeleton-Slide-Show/blob/master/index.html) file included in this repository
