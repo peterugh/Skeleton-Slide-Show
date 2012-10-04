@@ -127,4 +127,4 @@ If a navigation container is passed as a plugin option, then the following marku
 <a href="#" class="next_page">Next</a>
 ```
 
-###For default values and options see the [index.html](https://github.com/peterugh/Sliding-Doors/blob/master/index.html) file included in this repository
+###For default values and options see the [index.html](https://github.com/peterugh/Skeleton-Slide-Show/blob/master/index.html) file included in this repository
